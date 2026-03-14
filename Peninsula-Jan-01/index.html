@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Impact Report - Peninsula Mobile Screens</title>
+    <title>Content Impact Report - Custom Rub-On Transfers</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,11 +19,7 @@
             --white: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'DM Sans', sans-serif;
@@ -33,12 +29,8 @@
             padding: 40px 20px;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             color: white;
@@ -61,10 +53,7 @@
             border-radius: 50%;
         }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
+        .header-content { position: relative; z-index: 1; }
 
         .report-type {
             font-size: 14px;
@@ -112,12 +101,8 @@
             margin-bottom: 5px;
         }
 
-        .meta-value {
-            font-weight: 600;
-            font-size: 16px;
-        }
+        .meta-value { font-weight: 600; font-size: 16px; }
 
-        /* Stats Cards */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -168,13 +153,8 @@
             margin-bottom: 5px;
         }
 
-        .stat-description {
-            font-size: 14px;
-            color: var(--gray-dark);
-            line-height: 1.5;
-        }
+        .stat-description { font-size: 14px; color: var(--gray-dark); line-height: 1.5; }
 
-        /* Section Styles */
         .section {
             background: white;
             padding: 40px;
@@ -203,6 +183,7 @@
             font-weight: 700;
             font-size: 20px;
             margin-right: 20px;
+            flex-shrink: 0;
         }
 
         h2 {
@@ -222,9 +203,7 @@
             margin-top: 30px;
         }
 
-        h3:first-child {
-            margin-top: 0;
-        }
+        h3:first-child { margin-top: 0; }
 
         .subsection {
             background: var(--gray-light);
@@ -260,11 +239,7 @@
             margin-right: 10px;
         }
 
-        /* Lists */
-        .custom-list {
-            list-style: none;
-            padding: 0;
-        }
+        .custom-list { list-style: none; padding: 0; }
 
         .custom-list li {
             padding-left: 35px;
@@ -282,10 +257,7 @@
             font-size: 20px;
         }
 
-        .bullet-list li::before {
-            content: '•';
-            color: var(--gold);
-        }
+        .bullet-list li::before { content: '•'; color: var(--gold); }
 
         .numbered-item {
             background: white;
@@ -304,7 +276,6 @@
             margin-bottom: 10px;
         }
 
-        /* Competitive Comparison */
         .comparison-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -312,20 +283,9 @@
             margin: 25px 0;
         }
 
-        .comparison-card {
-            padding: 25px;
-            border-radius: 12px;
-        }
-
-        .comparison-card.competitors {
-            background: #fff0f0;
-            border: 2px solid #ffcccb;
-        }
-
-        .comparison-card.us {
-            background: #f0fff4;
-            border: 2px solid #b3e6cc;
-        }
+        .comparison-card { padding: 25px; border-radius: 12px; }
+        .comparison-card.competitors { background: #fff0f0; border: 2px solid #ffcccb; }
+        .comparison-card.us { background: #f0fff4; border: 2px solid #b3e6cc; }
 
         .comparison-card h4 {
             font-weight: 700;
@@ -335,15 +295,9 @@
             letter-spacing: 1px;
         }
 
-        .comparison-card.competitors h4 {
-            color: #c73e1d;
-        }
+        .comparison-card.competitors h4 { color: #c73e1d; }
+        .comparison-card.us h4 { color: #27ae60; }
 
-        .comparison-card.us h4 {
-            color: #27ae60;
-        }
-
-        /* Bottom Line */
         .bottom-line {
             background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
             color: white;
@@ -370,7 +324,6 @@
             line-height: 1.5;
         }
 
-        /* Badges */
         .badge {
             display: inline-block;
             padding: 6px 14px;
@@ -381,55 +334,31 @@
             margin-bottom: 8px;
         }
 
-        .badge-gold {
-            background: var(--gold-light);
-            color: var(--navy);
-        }
+        .badge-gold { background: var(--gold-light); color: var(--navy); }
+        .badge-blue { background: var(--blue); color: white; }
+        .badge-green { background: var(--green); color: white; }
 
-        .badge-blue {
-            background: var(--blue);
-            color: white;
-        }
-
-        .badge-green {
-            background: var(--green);
-            color: white;
-        }
-
-        strong {
-            color: var(--navy);
-            font-weight: 700;
-        }
-
-        em {
-            color: var(--navy);
-            font-style: italic;
-        }
+        strong { color: var(--navy); font-weight: 700; }
+        em { color: var(--navy); font-style: italic; }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
-            }
-
-            .comparison-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 25px;
-            }
+            h1 { font-size: 36px; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .section { padding: 25px; }
+            .header { padding: 40px 30px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+
         <!-- Header -->
         <div class="header">
             <div class="header-content">
                 <div class="report-type">Good News: We Published Your New Article</div>
-                <h1>Peninsula Mobile Screens</h1>
-                <div class="article-title" style="cursor: default;">"Safety Without Bars: Why LA Homeowners Are Switching to "Invisible" Security Doors"</div>
-                <a href="https://www.peninsulamobilescreens.com/modern-security-doors-los-angeles/" target="_blank" style="display: inline-block; background: rgba(212, 175, 55, 0.2); color: var(--gold-light); padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; letter-spacing: 1px; border: 2px solid var(--gold); transition: all 0.3s ease; margin-bottom: 20px;" onmouseover="this.style.background='var(--gold)'; this.style.color='#1a2332'" onmouseout="this.style.background='rgba(212, 175, 55, 0.2)'; this.style.color='var(--gold-light)'">
+                <h1>Custom Rub-On Transfers</h1>
+                <div class="article-title">"How to Restore Vintage Audio Lettering Without Decal "Ghosting""</div>
+                <a href="https://customrubontransfers.com/vintage-audio-lettering-restoration/" target="_blank" style="display: inline-block; background: rgba(212, 175, 55, 0.2); color: var(--gold-light); padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; letter-spacing: 1px; border: 2px solid var(--gold); transition: all 0.3s ease; margin-bottom: 20px;" onmouseover="this.style.background='var(--gold)'; this.style.color='#1a2332'" onmouseout="this.style.background='rgba(212, 175, 55, 0.2)'; this.style.color='var(--gold-light)'">
                     📄 SEE IT LIVE →
                 </a>
 
@@ -440,15 +369,15 @@
                     </div>
                     <div class="meta-item">
                         <div class="meta-label">Primary Keyword</div>
-                        <div class="meta-value">Modern security doors Los Angeles</div>
+                        <div class="meta-value">Vintage audio lettering restoration</div>
                     </div>
                     <div class="meta-item">
-                        <div class="meta-label">Secondary Keyword</div>
-                        <div class="meta-value">Invisible security doors LA</div>
+                        <div class="meta-label">Secondary Keywords</div>
+                        <div class="meta-value">Dry transfer decals for metal faceplates</div>
                     </div>
                     <div class="meta-item">
                         <div class="meta-label">Strategic Intent</div>
-                        <div class="meta-value">Educational Trust-Building & Mid-Funnel Objection Handling</div>
+                        <div class="meta-value">Educational Trust-Building & Mid-to-Bottom Funnel Objection Handling</div>
                     </div>
                 </div>
             </div>
@@ -457,40 +386,40 @@
         <!-- Key Metrics -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-icon">🏠</div>
+                <div class="stat-icon">🎚️</div>
                 <div class="stat-label">Asset Type</div>
-                <div class="stat-value">Authority Guide</div>
-                <div class="stat-description">Transitions homeowners from "security shopper" to informed architectural upgrade decision-maker</div>
+                <div class="stat-value">Authority Pillar</div>
+                <div class="stat-description">Definitive restoration guide elevating dry transfers from a craft product to a professional engineering solution for audiophile-grade repairs</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">🎯</div>
                 <div class="stat-label">Target Audience</div>
-                <div class="stat-value">LA Homeowners</div>
-                <div class="stat-description">Design-conscious owners in gentrifying neighborhoods — West Adams, Echo Park, Venice</div>
+                <div class="stat-value">Audio Collectors</div>
+                <div class="stat-description">High-fidelity collectors, vintage equipment restorers & DIY audiophiles seeking factory-grade repairs for Marantz, Pioneer, and Sansui equipment</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">⚡</div>
                 <div class="stat-label">Optimization Score</div>
-                <div class="stat-value">79 vs 65</div>
-                <div class="stat-description">Outscoring top competitor by 22% on content quality and topical depth</div>
+                <div class="stat-value">69 vs 50</div>
+                <div class="stat-description">Outscoring top competitor by 19 points — 38% better on content quality and topical depth</div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon">🗺️</div>
-                <div class="stat-label">Local Leverage</div>
-                <div class="stat-value">Exceptional</div>
-                <div class="stat-description">Micro-climate targeting, neighborhood specifics, LA Fire Dept. references & CA building codes cited</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">📚</div>
+                <div class="stat-icon">🏗️</div>
                 <div class="stat-label">Cluster Completeness</div>
-                <div class="stat-value">75%</div>
-                <div class="stat-description">Highly comprehensive on the core asset — localized problem, SME specs & testing standards covered</div>
+                <div class="stat-value">80%</div>
+                <div class="stat-description">Highly comprehensive pillar covering chemical degradation, application physics, and typographic historical context—well beyond any competing resource</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <div class="stat-label">AI Overview Strategy</div>
+                <div class="stat-value">Optimized</div>
+                <div class="stat-description">Question-based H2s followed by definitional paragraphs and scannable bulleted lists engineered specifically for Google's SGE extraction</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">🔗</div>
                 <div class="stat-label">Strategic Position</div>
-                <div class="stat-value">Semantic Anchor</div>
-                <div class="stat-description">Funnels topical authority to Money Pages: Security Doors, Vista Security Doors & Installation Services</div>
+                <div class="stat-value">Anchor Node</div>
+                <div class="stat-description">Routes informational queries directly to core money pages—Shop All Transfers, Tools + Application, and Custom Color-Matched Transfers</div>
             </div>
         </div>
 
@@ -502,15 +431,16 @@
             </div>
 
             <p style="font-size: 18px; line-height: 1.8; margin-bottom: 25px;">
-                We developed a <strong>comprehensive authority guide</strong> that transitions the homeowner from "security shopper" to "architectural decision-maker." Rather than a generic product listing or fear-based pitch, this asset functions as a <strong>localized preservation and life-safety handbook</strong> — directly integrating California building codes, LA neighborhood context, and SME-level product specifications to guide homeowners away from legacy wrought-iron bars toward a modern, sophisticated upgrade.
+                We developed a <strong>museum-grade restoration authority piece</strong> that repositions dry transfer decals from a hobbyist craft supply into a precision engineering solution. This asset functions as the definitive guide for vintage audio restorers who demand factory-indistinguishable results—directly dismantling the "waterslide decal" alternative at every turn to drive confident purchase decisions.
             </p>
 
             <div class="highlight-box">
                 <div class="highlight-title">Key Authority Signals Embedded</div>
                 <ul class="custom-list">
-                    <li><strong>Regulatory Frameworks:</strong> Explicit citation of California Building Code Section 1031.2.1 and LA Fire Department egress challenges — establishing legal and safety credibility that no local or national competitor addresses</li>
-                    <li><strong>Technical Depth:</strong> Knife shear test standards, three-point locking system mechanics, and force distribution factors covered at a genuine subject-matter-expert level that separates this from any big-box competitor's content</li>
-                    <li><strong>AI Overview Engineering:</strong> Q&A-structured H3 headings (e.g., "What is the knife shear test and why does it matter?") paired with definition blocks and numbered lists — purpose-built to capture Google SGE/AI Snapshot features and featured snippet positions</li>
+                    <li><strong>Chemical Degradation Science:</strong> Coverage of why original silk-screening and factory paint fails over time—establishing technical credibility that generic hobbyist forums categorically lack</li>
+                    <li><strong>Typographic Historical Context:</strong> Hyper-niche knowledge including Metropolis font matching for 1970s Marantz receivers—the kind of specificity that signals genuine expertise to serious collectors</li>
+                    <li><strong>"Ghosting" Artifact Takedown:</strong> Direct, technical dismantling of waterslide decal failures on brushed aluminum, with the physics of why carrier film creates visible ghosting that ruins the restoration aesthetic</li>
+                    <li><strong>Hollywood & Studio Market Relevance:</strong> Passive appeal to LA-based professional recording studios and propmasters requiring camera-ready equipment replicas without cheap-sticker glare, expanding the commercial reach beyond hobbyist buyers</li>
                 </ul>
             </div>
         </div>
@@ -524,14 +454,19 @@
 
             <div class="subsection">
                 <h3>Who This Speaks To</h3>
-                <p>This content targets the <strong>design-conscious Los Angeles homeowner</strong> in gentrifying neighborhoods — West Adams, Echo Park, Silver Lake — who is less concerned with the price per unit and more concerned with <strong>curb appeal, architectural integrity, fire safety compliance, and property value</strong>. They are in a <strong>high-consideration decision-making mode</strong>, looking for assurance that they can achieve real security without compromising the character of a Venice bungalow or Spanish Colonial home.</p>
+                <p>This content targets the <strong>high-fidelity audio collector, vintage equipment restorer, or serious DIY audiophile</strong> who has already tried cheap alternatives and been burned by ghost-film artifacts, ammonia damage to original silk-screening, or generic results that betray the restoration under inspection. They are in a <strong>quality-first decision-making mode</strong>—looking for a solution that meets their exacting standards, not the lowest-cost option.</p>
             </div>
 
             <div class="subsection">
                 <h3>The Problem We're Solving</h3>
                 <p style="font-size: 18px; line-height: 1.8;">
-                    We aren't just solving <em>"Where do I buy a security door?"</em>; we are solving <strong>"How do I protect my home, preserve its architectural value, stay compliant with California fire egress codes — and avoid the property value hit that comes with iron bars?"</strong>
+                    We aren't just solving <em>"How do I replace faded lettering?"</em>; we are solving <strong>"How do I achieve a factory-original finish on a 1970s Marantz faceplate that will pass visual inspection from a professional collector or on-camera?"</strong>
                 </p>
+            </div>
+
+            <div class="subsection">
+                <h3>Funnel Position</h3>
+                <p>Positioned as a <strong>mid-to-bottom funnel objection-handling asset</strong>, this piece converts restorers who are already sold on the need for a quality solution but are still weighing waterslide decals as a cheaper alternative. By systematically dismantling that alternative with technical evidence, we remove the final obstacle between consideration and purchase.</p>
             </div>
         </div>
 
@@ -545,33 +480,33 @@
             <div class="comparison-grid">
                 <div class="comparison-card competitors">
                     <h4>❌ What Competitors Do</h4>
-                    <p>National big-box hardware stores and old-school local wrought-iron contractors rely on <strong>fear-based, generic security marketing</strong> with zero local context. They offer product pages with flat specs but provide <strong>no guidance</strong> on LA-specific architectural preservation, coastal vs. inland climate requirements, fire egress liability, or the measurable hit that iron bars deliver to real estate values in design-conscious LA neighborhoods.</p>
+                    <p>Generic hobbyist electronics blogs and scale-model forums recommend <strong>cheap waterslide decals</strong> that produce visible ghosting on brushed aluminum—and often give dangerous cleaning advice using ammonia or degreasers that destroy fragile original silk-screening. Mass-market decal manufacturers treat faceplate restoration as a commodity with zero typographic nuance, leaving restorers with results that look obviously aftermarket.</p>
                 </div>
                 <div class="comparison-card us">
                     <h4>✓ What We Did Instead</h4>
-                    <p>We created an <strong>architectural preservation-first resource</strong> that addresses the "invisible" layer of the security door decision: fire code compliance, neighborhood aesthetics, real estate value impact, and micro-climate material durability. By framing iron bars as a <strong>liability rather than a solution</strong>, we position Peninsula Mobile Screens as the sophisticated, code-compliant upgrade that design-conscious homeowners actually want.</p>
+                    <p>We reframe the entire category from <strong>"cheap craft fix" to "museum-grade precision."</strong> By explaining the physics of ghosting artifacts, the chemistry of paint degradation, and the typographic history of iconic audio brands, we make the case that dry transfers are not a mere alternative—they are the <em>only</em> professional solution. We don't just sell transfers; we validate the standard.</p>
                 </div>
             </div>
 
             <div style="margin-top: 30px;">
                 <div class="numbered-item">
-                    <h4>1. The Narrative Pivot — From "Security" to "Architectural Preservation"</h4>
-                    <p>We reframed the conversation entirely: instead of leading with fear, we lead with <strong>architectural identity and property value</strong>. By showing how old iron bars actively hurt LA real estate values and create fire egress liability under California code, we make Peninsula Mobile Screens' product the logical, modern choice for homeowners who care about their home's future — not just its locks.</p>
+                    <h4>1. The "Ghosting" Physics Takedown</h4>
+                    <p>We provided a <strong>technical explanation of why waterslide carrier film creates visible ghosting on brushed aluminum</strong>—something no competitor addresses with any scientific rigor. By naming the exact failure mechanism, we give restorers the vocabulary to disqualify the cheap alternative themselves.</p>
                 </div>
 
                 <div class="numbered-item">
-                    <h4>2. California Building Code Citation (§1031.2.1)</h4>
-                    <p>No competitor references California Building Code Section 1031.2.1 or the specific fire egress challenges faced by the LA Fire Department. By doing so, we position the article — and the brand — as a <strong>compliance-aware authority</strong>, not just a hardware vendor. This is especially persuasive to homeowners in older neighborhoods with period-style homes where egress requirements are most consequential.</p>
+                    <h4>2. Hyper-Niche Typographic Expertise</h4>
+                    <p>We embedded brand-specific font knowledge—including <strong>Metropolis font matching for 1970s Marantz receivers</strong>—that signals genuine domain expertise impossible to fake. This level of specificity builds instant credibility with serious collectors and makes the content the definitive resource for that audience segment.</p>
                 </div>
 
                 <div class="numbered-item">
-                    <h4>3. Micro-Climate & Neighborhood Specificity</h4>
-                    <p>We name-drop highly specific geographic entities: <strong>Santa Monica and Marina Del Rey</strong> require marine-grade corrosion resistance, while <strong>Pasadena and the San Fernando Valley</strong> face different inland heat and UV degradation conditions. This level of specificity proves boots-on-the-ground local authority that no national competitor can authentically replicate — and directly answers the questions LA homeowners are actually asking.</p>
+                    <h4>3. Chemical Safety & Damage Prevention</h4>
+                    <p>We directly addressed the <strong>dangerous cleaning advice circulating in hobbyist forums</strong> (ammonia and degreaser use that strips original silk-screening), positioning Custom Rub-On Transfers as the brand that actually protects the collector's investment—not just sells them a product.</p>
                 </div>
 
                 <div class="numbered-item">
-                    <h4>4. SME-Level Technical Specification</h4>
-                    <p>While competitors list basic product dimensions, we explain the <strong>knife shear test</strong>, three-point locking system mechanics, and the three factors of force distribution in forced-entry scenarios. This depth of technical coverage establishes genuine subject matter expertise and builds the kind of trust that converts the most research-driven homebuyers — the exact audience most likely to invest in a premium security product.</p>
+                    <h4>4. The Los Angeles Professional Market Play</h4>
+                    <p>By anchoring in Los Angeles, we passively appeal to the region's <strong>dense concentration of professional recording studios, boutique audio repair shops, and Hollywood propmasters</strong> who need camera-ready equipment replicas. This commercial framing elevates the product beyond the hobbyist market into professional-grade procurement territory.</p>
                 </div>
             </div>
         </div>
@@ -586,9 +521,10 @@
             <h3>Structural Choices That Matter</h3>
 
             <ul class="custom-list" style="margin-top: 20px;">
-                <li><strong>Q&A H3 Structure for AI Overviews:</strong> Explicit question-format headings (e.g., "How does a three-point locking system prevent forced entry?") immediately followed by concise definition blocks and numbered lists — purpose-engineered to appear in Google's SGE/AI Snapshot features and featured snippet positions ahead of national competitors</li>
-                <li><strong>Semantic Anchor & Internal Link Architecture:</strong> Structured internal links flow authority directly to three core Money Pages — Security Doors, Vista Security Doors, and Installation Services — reducing click-depth for both users and search crawlers while keeping conversion paths short</li>
-                <li><strong>Long-Tail Informational Intent Capture:</strong> Queries on fire codes, knife shear tests, and local crime statistics are addressed directly, building massive topical relevance that then funnels authority back to the commercial product pages where it drives real business value</li>
+                <li><strong>Question-Based H2s for AI Extraction:</strong> Headers like "Why Do Vintage Faceplates Lose Their Lettering?" immediately followed by definitional paragraphs are structurally engineered for Google's SGE snapshot feature—capturing SERP real estate before a user ever clicks</li>
+                <li><strong>Scannable Bulleted Damage Lists:</strong> Quick-reference lists (e.g., "Chemicals that damage vintage lettering") are formatted for direct extraction into AI Overviews and featured snippets, maximizing zero-click visibility</li>
+                <li><strong>Application Physics Depth:</strong> Technical coverage of the dry transfer application process establishes mechanical credibility that differentiates the brand from generic craft suppliers in the eyes of detail-oriented collectors</li>
+                <li><strong>Internal Link Architecture to Money Pages:</strong> Acts as a high-value semantic node routing directly to core conversion destinations—Shop All Transfers, Tools + Application, and Custom Color-Matched Transfers—flattening click-depth and passing topical authority to product categories</li>
             </ul>
         </div>
 
@@ -604,22 +540,22 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                 <div style="background: #f0f9ff; padding: 20px; border-radius: 10px; border-left: 4px solid #0ea5e9;">
                     <h4 style="font-weight: 700; margin-bottom: 10px; color: #0369a1;">🤖 AI Overview Presence</h4>
-                    <p style="font-size: 14px;">Is the content appearing in Google's AI-generated snapshots for security door and fire code queries? This indicates high topical authority and validates the Q&A engineering strategy.</p>
+                    <p style="font-size: 14px;">Is the content appearing in Google's AI-generated snapshots for vintage audio restoration and dry transfer decal queries? The question-based H2 structure was engineered specifically for SGE extraction.</p>
                 </div>
 
                 <div style="background: #fef3c7; padding: 20px; border-radius: 10px; border-left: 4px solid #f59e0b;">
                     <h4 style="font-weight: 700; margin-bottom: 10px; color: #b45309;">📊 Impression Growth</h4>
-                    <p style="font-size: 14px;">Total search visibility for target keywords — tracking how often we appear in search results regardless of clicks as the article indexes and its local authority builds over time.</p>
+                    <p style="font-size: 14px;">Total search visibility for target keywords—tracking how often we appear in results for vintage audio lettering restoration and faceplate repair queries regardless of clicks</p>
                 </div>
 
                 <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; border-left: 4px solid #22c55e;">
                     <h4 style="font-weight: 700; margin-bottom: 10px; color: #15803d;">🎯 Keyword Position Movement</h4>
-                    <p style="font-size: 14px;">Ranking trajectory for "modern security doors Los Angeles," "invisible security doors LA," and long-tail code/safety queries — tracking movement from informational to commercial intent SERP positions.</p>
+                    <p style="font-size: 14px;">Ranking trajectory for "restoration," "dry transfer," and "faceplate lettering" terms—high-intent collector queries versus generic "decal" searches</p>
                 </div>
 
                 <div style="background: #fae8ff; padding: 20px; border-radius: 10px; border-left: 4px solid #a855f7;">
                     <h4 style="font-weight: 700; margin-bottom: 10px; color: #7e22ce;">⭐ Featured Snippet Opportunities</h4>
-                    <p style="font-size: 14px;">SERP features captured (definition boxes, FAQ panels, numbered lists) — premium visibility positions that establish Peninsula Mobile Screens as the authoritative local voice on modern security doors in LA.</p>
+                    <p style="font-size: 14px;">SERP features captured (definition boxes, chemical damage lists, step-by-step application guides)—the bulleted damage lists and definitional blocks are prime candidates for these premium placements</p>
                 </div>
             </div>
         </div>
@@ -633,23 +569,24 @@
 
             <h3>Quality Indicators</h3>
             <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px;">
-                <span class="badge badge-gold">Hyper-Local Authority</span>
-                <span class="badge badge-blue">CA Building Code Cited</span>
-                <span class="badge badge-green">AI Overview Ready</span>
-                <span class="badge badge-gold">Architectural Preservation Focus</span>
-                <span class="badge badge-blue">SME-Level Technical Depth</span>
-                <span class="badge badge-green">Micro-Climate Targeting</span>
+                <span class="badge badge-gold">Museum-Grade Expertise</span>
+                <span class="badge badge-blue">Typographic Historical Depth</span>
+                <span class="badge badge-green">Zero Filler Content</span>
+                <span class="badge badge-gold">Objection-First Architecture</span>
+                <span class="badge badge-blue">AI Snapshot Optimized</span>
+                <span class="badge badge-green">LA Pro Market Aligned</span>
             </div>
 
             <ul class="custom-list bullet-list">
-                <li><strong>Local Depth:</strong> Specific neighborhood, micro-climate, and architectural references that no national competitor can authentically replicate — proving genuine boots-on-the-ground LA expertise</li>
-                <li><strong>Code Citations:</strong> California Building Code §1031.2.1 and LA Fire Department context bulletproof the safety and compliance narrative, adding a layer of authority that generic security content never achieves</li>
-                <li><strong>Narrative Reframe:</strong> Every section reinforces the pivot from "fear-based security product" to "sophisticated architectural upgrade" — systematically removing the objections of design-conscious homeowners before they can form</li>
+                <li><strong>Technical Depth:</strong> Comprehensive coverage of chemical degradation, application physics, and typographic history that generic hobbyist forums cannot replicate</li>
+                <li><strong>Collector-Grade Language:</strong> Written in the vocabulary of high-fidelity audio restorers and serious collectors, not casual craft shoppers</li>
+                <li><strong>Zero Filler:</strong> Every section directly addresses a specific objection, failure mode, or knowledge gap—no generic "restoration is important" padding</li>
+                <li><strong>SGE-Engineered Structure:</strong> Question-based headers with immediate definitional answers designed for extraction into Google's AI Overviews, maximizing SERP real estate beyond the organic click</li>
             </ul>
 
             <h3>Strategic Fit</h3>
             <p style="line-height: 1.8;">
-                This asset serves as the <strong>"LA Homeowner Authority Pillar,"</strong> allowing us to link out with high contextual relevance to specific product pages — Security Doors, Vista Security Doors, and Installation Services — supporting the broader "Residential Security Upgrades" cluster on the site and reducing SEO click-depth to Money Pages so that both users and crawlers reach conversion destinations faster.
+                This asset serves as the <strong>"Vintage Electronics Restoration Pillar,"</strong> creating high-relevance internal links to core product categories—Shop All Transfers, Tools + Application, and Custom Color-Matched Transfers—while establishing Custom Rub-On Transfers as the definitive professional authority on faceplate restoration for the Los Angeles market and the broader audiophile collector community.
             </p>
         </div>
 
@@ -657,7 +594,7 @@
         <div class="bottom-line">
             <div class="bottom-line-label">Bottom Line</div>
             <div class="bottom-line-text">
-                We have moved the conversation from "price per bar" to "cost of getting it wrong" — positioning Peninsula Mobile Screens as the sophisticated, code-compliant choice for LA homeowners who refuse to sacrifice beauty for security.
+                We have moved the conversation from "What's the cheapest fix?" to "What's the only solution that meets a collector's standard?"—positioning Custom Rub-On Transfers as the museum-grade partner that turns faded faceplates into factory-original restorations.
             </div>
         </div>
 
