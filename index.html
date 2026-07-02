@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Impact Report - There You Have It 3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a2332;
+            --navy-light: #2d3e50;
+            --gold: #d4af37;
+            --gold-light: #f4d576;
+            --blue: #4a90e2;
+            --green: #2ecc71;
+            --gray-light: #f8f9fa;
+            --gray-mid: #e9ecef;
+            --gray-dark: #495057;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--navy);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 60px 50px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(26, 35, 50, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .report-type {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .article-title {
+            font-size: 18px;
+            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .meta-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-dark);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .stat-value {
+            font-family: 'Crimson Pro', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 5px;
+        }
+
+        .stat-description {
+            font-size: 14px;
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        /* Section Styles */
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--gray-mid);
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: var(--navy);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--navy);
+            flex: 1;
+        }
+
+        h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h3:first-child {
+            margin-top: 0;
+        }
+
+        .subsection {
+            background: var(--gray-light);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--blue);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff4d6 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid var(--gold-light);
+            margin: 25px 0;
+        }
+
+        .highlight-title {
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--navy);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .highlight-title::before {
+            content: '★';
+            color: var(--gold);
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        /* Lists */
+        .custom-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .custom-list li {
+            padding-left: 35px;
+            margin-bottom: 15px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .custom-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .bullet-list li::before {
+            content: '•';
+            color: var(--gold);
+        }
+
+        .numbered-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--gold);
+        }
+
+        .numbered-item h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        /* Competitive Comparison */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .comparison-card {
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .comparison-card.competitors {
+            background: #fff0f0;
+            border: 2px solid #ffcccb;
+        }
+
+        .comparison-card.us {
+            background: #f0fff4;
+            border: 2px solid #b3e6cc;
+        }
+
+        .comparison-card h4 {
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-card.competitors h4 {
+            color: #c73e1d;
+        }
+
+        .comparison-card.us h4 {
+            color: #27ae60;
+        }
+
+        /* Bottom Line */
+        .bottom-line {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 20px 60px rgba(26, 35, 50, 0.3);
+        }
+
+        .bottom-line-label {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+        }
+
+        .bottom-line-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge-gold {
+            background: var(--gold-light);
+            color: var(--navy);
+        }
+
+        .badge-blue {
+            background: var(--blue);
+            color: white;
+        }
+
+        .badge-green {
+            background: var(--green);
+            color: white;
+        }
+
+        strong {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        em {
+            color: var(--navy);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .header {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="report-type">Good News: We Published Your New Article</div>
+                <h1>There You Have It 3D</h1>
+                <div class="article-title" style="cursor: default;">"Scaling Up: Large Format 3D Printing for Film and TV Sets"</div>
+                <a href="https://www.thereyouhaveit3d.com/post/scaling-up-large-format-3d-printing-for-film-and-tv-sets" target="_blank" style="display: inline-block; background: rgba(212, 175, 55, 0.2); color: var(--gold-light); padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; letter-spacing: 1px; border: 2px solid var(--gold); transition: all 0.3s ease; margin-bottom: 20px;" onmouseover="this.style.background='var(--gold)'; this.style.color='#1a2332'" onmouseout="this.style.background='rgba(212, 175, 55, 0.2)'; this.style.color='var(--gold-light)'">
+                    📄 SEE IT LIVE →
+                </a>
+
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <div class="meta-label">Published</div>
+                        <div class="meta-value">June 16, 2026</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Primary Keyword</div>
+                        <div class="meta-value">Large format 3D printing for film and TV</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Secondary Keywords</div>
+                        <div class="meta-value">Large scale 3D printing props</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Strategic Intent</div>
+                        <div class="meta-value">Bottom-Funnel Commercial Capture from Production Designers & Prop Masters</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🎬</div>
+                <div class="stat-label">Asset Type</div>
+                <div class="stat-value">Pillar Guide</div>
+                <div class="stat-description">A definitive industry pillar page covering the full spectrum of large-format 3D printing for entertainment fabrication—from material trade-offs to realistic turnarounds and exact cost parameters</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-label">Target Audience</div>
+                <div class="stat-value">Art Departments</div>
+                <div class="stat-description">Film and TV production designers, prop masters, and VFX supervisors operating on tight shooting schedules who need fabrication partners that speak their language</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-label">Optimization Score</div>
+                <div class="stat-value">80 vs 67</div>
+                <div class="stat-description">Outscoring the top competitor by 13 points — 19% better on content quality</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏗️</div>
+                <div class="stat-label">Cluster Completeness</div>
+                <div class="stat-value">High</div>
+                <div class="stat-description">Systematically covers the fundamental What/Why, direct set applications, material trade-offs, realistic turnarounds, and exact cost parameters—functioning as a definitive pillar for the topic cluster</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <div class="stat-label">AI Overview Strategy</div>
+                <div class="stat-value">Optimized</div>
+                <div class="stat-description">Isolated definition blocks and structured pricing data ($500–$2,000 for hero props; $2,000–$10,000 for architectural elements) engineered for zero-click query capture by generative engines</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔗</div>
+                <div class="stat-label">Strategic Position</div>
+                <div class="stat-value">Bottom Funnel</div>
+                <div class="stat-description">Scenario-based conversion paths ("On a Production Deadline?", "Don't Have a 3D Model Yet?") intercept readers at different stages of problem awareness and route them directly to specialized service pages</div>
+            </div>
+        </div>
+
+        <!-- Section 1: What We Built -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2>What We Built For You</h2>
+            </div>
+
+            <p style="font-size: 18px; line-height: 1.8; margin-bottom: 25px;">
+                We developed a <strong>definitive industry pillar page</strong> that speaks the exact language of the film and TV art department—not the language of a machine spec sheet. This asset functions as a <strong>schedule-security and camera-ready precision engine</strong>, using production-insider framing (print seams as a "camera problem," stunt-safe duplicates, LED volume background alignment) to position There You Have It 3D as an insider partner rather than an outsourced vendor.
+            </p>
+
+            <div class="highlight-box">
+                <div class="highlight-title">Key Authority Signals Embedded</div>
+                <ul class="custom-list">
+                    <li><strong>Production-Language Framing:</strong> Content addresses print seams as a "camera problem," discusses stunt-safe duplicates, and aligns physical prop delivery with LED volume backgrounds—vocabulary that immediately signals insider expertise to any production designer or prop master</li>
+                    <li><strong>Single-Piece Printing as the Hero Angle:</strong> Positions large-format single-piece output not merely as a manufacturing method, but as the definitive solution to the hidden labor costs—sanding, gap-filling, gluing—and timeline risks inherent in segmented printing or traditional mold-making</li>
+                    <li><strong>Exact Pricing Architecture:</strong> Structured cost data ($500–$2,000 for hero props; $2,000–$10,000 for architectural elements) gives production designers real budget anchors—a level of transparency that generalist competitors consistently avoid</li>
+                    <li><strong>Los Angeles Entity Integration:</strong> Local team references and a 213 area code are embedded directly into conversion mechanisms, leveraging Hollywood proximity without diluting the national and global authority of the core educational content</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 2: Strategic Positioning -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2>Strategic Positioning</h2>
+            </div>
+
+            <div class="subsection">
+                <h3>Who This Speaks To</h3>
+                <p>This content targets the <strong>production designer, prop master, or VFX supervisor</strong> who is staring down a tight shooting schedule and needs a fabrication partner that already understands the realities of a working set. They are not looking for machine specifications—they are looking for a vendor that can solve their specific problem fast, without adding new ones.</p>
+            </div>
+
+            <div class="subsection">
+                <h3>The Problem We're Solving</h3>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    We aren't just solving <em>"Can you 3D print a large prop?"</em>; we are solving <strong>"Can you deliver camera-ready, schedule-safe, stunt-approved pieces without the tooling costs, lead times, and seam problems that have burned us before?"</strong>
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3>Funnel Position</h3>
+                <p>Positioned as a <strong>bottom-of-funnel commercial conversion asset</strong>, this piece meets the production buyer at their moment of highest decision urgency—a deadline, a budget squeeze, a traditional fabrication shop that just quoted eight weeks. It converts that urgency into a direct inquiry by proving There You Have It 3D already knows how production works and has already solved the exact problem they're facing.</p>
+            </div>
+        </div>
+
+        <!-- Section 3: Competitive Differentiation -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2>How We Differentiated</h2>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card competitors">
+                    <h4>❌ What Competitors Do</h4>
+                    <p>Traditional prop fabrication shops and generalist 3D printing bureaus lead with <strong>machine specifications</strong>—extrusion rates, nozzle temperatures, and polymer data sheets. They have no fluency in production realities, no understanding of what a print seam costs you on camera day, and no acknowledgment of the scheduling risk they represent to a shoot.</p>
+                </div>
+                <div class="comparison-card us">
+                    <h4>✓ What We Did Instead</h4>
+                    <p>We pivot from <strong>"Here are our specs" to "Here is how we solve your production problem."</strong> By framing the entire conversation around schedule security, camera-ready output, and stunt-safe duplicates, we expose the gap between what generalist printers sell and what film and TV art departments actually need.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <div class="numbered-item">
+                    <h4>1. The Production-Language Framework</h4>
+                    <p>We built the entire content architecture around <strong>art department vocabulary</strong>—print seams as a camera problem, stunt duplicates, LED volume alignment—vocabulary that generalist 3D printing companies have never used and that production designers immediately recognize as proof of genuine industry fluency.</p>
+                </div>
+
+                <div class="numbered-item">
+                    <h4>2. The Schedule Security Angle</h4>
+                    <p>We positioned single-piece large-format printing as the answer to the <strong>hidden labor costs and timeline risks</strong> of segmented printing and traditional mold-making—sanding, gap-filling, gluing, and the downstream delays they create on a live production schedule. This reframes the purchase decision from "vendor cost" to "production risk management."</p>
+                </div>
+
+                <div class="numbered-item">
+                    <h4>3. The Transparent Pricing Architecture</h4>
+                    <p>By publishing exact cost ranges ($500–$2,000 for hero props; $2,000–$10,000 for architectural elements), we deliver the <strong>budget clarity that production designers need</strong> to make a same-day decision—something no generalist bureau and no traditional fabrication shop puts on record publicly.</p>
+                </div>
+
+                <div class="numbered-item">
+                    <h4>4. The Scenario-Based Conversion Paths</h4>
+                    <p>Dedicated conversion modules—<strong>"On a Production Deadline?"</strong> and <strong>"Don't Have a 3D Model Yet?"</strong>—intercept readers at two distinct stages of problem awareness and route them directly to the right specialized service page, compressing the path from content discovery to production inquiry.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Content Architecture -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2>Content Architecture</h2>
+            </div>
+
+            <h3>Structural Choices That Matter</h3>
+
+            <ul class="custom-list" style="margin-top: 20px;">
+                <li><strong>Isolated Definition Blocks for AI Overviews:</strong> Passages like "In a film or TV production context, 'large format' means..." are structured as standalone definition units engineered to be extracted by Google's AI Overview feature, capturing zero-click query visibility before a user ever reaches the page</li>
+                <li><strong>Structured Pricing Data:</strong> Specific cost ranges for hero props and architectural elements give generative engines concrete, citable figures—the kind of structured data AI overviews prioritize over editorial prose from competitors</li>
+                <li><strong>H2/H3 Modular Hierarchy:</strong> The heading architecture maps directly to People Also Ask search patterns, creating multiple entry points for the article to surface across different query variations in the same topic cluster</li>
+                <li><strong>Scenario-Based Internal Linking:</strong> Conversion paths routed by production scenario ("On a Production Deadline?" / "Don't Have a 3D Model Yet?") pass topical authority directly to specialized service pages while reducing click-depth to inquiry for buyers at different stages of decision-making</li>
+            </ul>
+        </div>
+
+        <!-- Section 5: What We're Monitoring -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2>What We're Monitoring</h2>
+            </div>
+
+            <p style="margin-bottom: 25px;">As this content gains visibility over the next 60–90 days, we'll track:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="background: #f0f9ff; padding: 20px; border-radius: 10px; border-left: 4px solid #0ea5e9;">
+                    <h4 style="font-weight: 700; margin-bottom: 10px; color: #0369a1;">🤖 AI Overview Presence</h4>
+                    <p style="font-size: 14px;">Is the content appearing in Google's AI-generated snapshots for large-format 3D printing and film prop queries? The isolated definition blocks and structured pricing data were built specifically to be cited by generative engines.</p>
+                </div>
+
+                <div style="background: #fef3c7; padding: 20px; border-radius: 10px; border-left: 4px solid #f59e0b;">
+                    <h4 style="font-weight: 700; margin-bottom: 10px; color: #b45309;">📊 Impression Growth</h4>
+                    <p style="font-size: 14px;">Total search visibility for target keywords—tracking how often we appear for large-format printing, film prop fabrication, and production design queries regardless of click-through rate</p>
+                </div>
+
+                <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; border-left: 4px solid #22c55e;">
+                    <h4 style="font-weight: 700; margin-bottom: 10px; color: #15803d;">🎯 Keyword Position Movement</h4>
+                    <p style="font-size: 14px;">Ranking trajectory for "large format 3D printing film TV" and "large scale 3D printing props" terms—high-intent commercial queries where production industry specificity gives us a structural edge over generalist competitors</p>
+                </div>
+
+                <div style="background: #fae8ff; padding: 20px; border-radius: 10px; border-left: 4px solid #a855f7;">
+                    <h4 style="font-weight: 700; margin-bottom: 10px; color: #7e22ce;">⭐ Featured Snippet Opportunities</h4>
+                    <p style="font-size: 14px;">SERP features captured (definition boxes, pricing tables, material comparison)—the structured cost data and definition blocks are prime candidates for these premium placements that competitors have never seriously competed for</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Built to Compete -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <h2>Why This Content Is Built to Compete</h2>
+            </div>
+
+            <h3>Quality Indicators</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px;">
+                <span class="badge badge-gold">Production-Insider Language</span>
+                <span class="badge badge-blue">Transparent Pricing Data</span>
+                <span class="badge badge-green">Zero Filler Content</span>
+                <span class="badge badge-gold">Scenario-Based Conversion Paths</span>
+                <span class="badge badge-blue">AI Overview Optimized</span>
+                <span class="badge badge-green">LA Entity Integration</span>
+            </div>
+
+            <ul class="custom-list bullet-list">
+                <li><strong>Industry Fluency:</strong> Content written in the exact vocabulary of the film and TV art department—print seams as camera problems, stunt-safe duplicates, LED volume alignment—that signals genuine production experience no generalist 3D printing bureau can credibly replicate</li>
+                <li><strong>Transparent Pricing:</strong> Published cost ranges for hero props and architectural elements give production designers real budget anchors at the moment of decision, a level of transparency that competitors consistently avoid and buyers consistently seek</li>
+                <li><strong>Zero Filler:</strong> Every section addresses a specific conversion friction point—from validating the scheduling risk of traditional fabrication to disqualifying segmented printing to positioning large-format single-piece output as the only rational choice for camera-ready production work</li>
+                <li><strong>AI-Engineered Structure:</strong> Isolated definition blocks and structured pricing data designed for AI Overview and Featured Snippet extraction, maximizing SERP real estate in a category where no competitor has published content at this depth or specificity</li>
+            </ul>
+
+            <h3>Strategic Fit</h3>
+            <p style="line-height: 1.8;">
+                This asset serves as the <strong>"Entertainment Fabrication Authority Pillar,"</strong> establishing There You Have It 3D as the definitive expert on large-format 3D printing for the film and TV industry—and creating a direct, low-friction path from first search to production inquiry for the exact buyers There You Have It 3D is built to serve.
+            </p>
+        </div>
+
+        <!-- Bottom Line -->
+        <div class="bottom-line">
+            <div class="bottom-line-label">Bottom Line</div>
+            <div class="bottom-line-text">
+                We have moved the conversation from "Here are our machine specs" to "Here is how we solve your production problem"—positioning There You Have It 3D as the art department's insider fabrication partner, not just another 3D printing vendor.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
