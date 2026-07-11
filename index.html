@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Impact Report - Printastic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1a2332;
+            --navy-light: #2d3e50;
+            --gold: #d4af37;
+            --gold-light: #f4d576;
+            --blue: #4a90e2;
+            --green: #2ecc71;
+            --gray-light: #f8f9fa;
+            --gray-mid: #e9ecef;
+            --gray-dark: #495057;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--navy);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 60px 50px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(26, 35, 50, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .report-type {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .article-title {
+            font-size: 18px;
+            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .meta-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .meta-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid var(--gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray-dark);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .stat-value {
+            font-family: 'Crimson Pro', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 5px;
+        }
+
+        .stat-description {
+            font-size: 14px;
+            color: var(--gray-dark);
+            line-height: 1.5;
+        }
+
+        /* Section Styles */
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--gray-mid);
+        }
+
+        .section-number {
+            width: 50px;
+            height: 50px;
+            background: var(--navy);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--navy);
+            flex: 1;
+        }
+
+        h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+
+        h3:first-child {
+            margin-top: 0;
+        }
+
+        .subsection {
+            background: var(--gray-light);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--blue);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff4d6 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid var(--gold-light);
+            margin: 25px 0;
+        }
+
+        .highlight-title {
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--navy);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .highlight-title::before {
+            content: '★';
+            color: var(--gold);
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        /* Lists */
+        .custom-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .custom-list li {
+            padding-left: 35px;
+            margin-bottom: 15px;
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .custom-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .bullet-list li::before {
+            content: '•';
+            color: var(--gold);
+        }
+
+        .numbered-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--gold);
+        }
+
+        .numbered-item h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        /* Competitive Comparison */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .comparison-card {
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .comparison-card.competitors {
+            background: #fff0f0;
+            border: 2px solid #ffcccb;
+        }
+
+        .comparison-card.us {
+            background: #f0fff4;
+            border: 2px solid #b3e6cc;
+        }
+
+        .comparison-card h4 {
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-card.competitors h4 {
+            color: #c73e1d;
+        }
+
+        .comparison-card.us h4 {
+            color: #27ae60;
+        }
+
+        /* Bottom Line */
+        .bottom-line {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 20px 60px rgba(26, 35, 50, 0.3);
+        }
+
+        .bottom-line-label {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+        }
+
+        .bottom-line-text {
+            font-family: 'Crimson Pro', serif;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge-gold {
+            background: var(--gold-light);
+            color: var(--navy);
+        }
+
+        .badge-blue {
+            background: var(--blue);
+            color: white;
+        }
+
+        .badge-green {
+            background: var(--green);
+            color: white;
+        }
+
+        strong {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        em {
+            color: var(--navy);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .header {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <div class="report-type">Good News: We Published Your New Article</div>
+                <h1>Printastic</h1>
+                <div class="article-title" style="cursor: default;">"Where to Put Yard Signs for Your Business — The Local Marketing Guide"</div>
+                <a href="https://www.printastic.com/blog/where-to-put-yard-signs-for-business/" target="_blank" style="display: inline-block; background: rgba(212, 175, 55, 0.2); color: var(--gold-light); padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; letter-spacing: 1px; border: 2px solid var(--gold); transition: all 0.3s ease; margin-bottom: 20px;" onmouseover="this.style.background='var(--gold)'; this.style.color='#1a2332'" onmouseout="this.style.background='rgba(212, 175, 55, 0.2)'; this.style.color='var(--gold-light)'">
+                    📄 SEE IT LIVE →
+                </a>
+
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <div class="meta-label">Published</div>
+                        <div class="meta-value">June 7, 2026</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Primary Keyword</div>
+                        <div class="meta-value">Where to put yard signs for business</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Secondary Keywords</div>
+                        <div class="meta-value">Yard sign advertising</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Strategic Intent</div>
+                        <div class="meta-value">Bottom & Middle-Funnel Marketing Authority & Custom Sign Conversion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📍</div>
+                <div class="stat-label">Asset Type</div>
+                <div class="stat-value">Marketing Playbook</div>
+                <div class="stat-description">Consultative strategy guide walking local service businesses through where, how, and how many yard signs to deploy for real, trackable results</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-label">Target Audience</div>
+                <div class="stat-value">Local Service Pros</div>
+                <div class="stat-description">Contractors, landscapers, HVAC companies, real estate agents, and event organizers looking for cost-effective, high-visibility local marketing</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-label">Optimization Score</div>
+                <div class="stat-value">78 vs 49</div>
+                <div class="stat-description">Outscoring the top competitor by 29 points — 59% better on content quality</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏗️</div>
+                <div class="stat-label">Cluster Completeness</div>
+                <div class="stat-value">High</div>
+                <div class="stat-description">Covers the full user journey — material selection, design principles, placement strategy, legal compliance, volume planning, and ROI tracking</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <div class="stat-label">AI Overview Strategy</div>
+                <div class="stat-value">Optimized</div>
+                <div class="stat-description">Structured Key Takeaways block, nested Table of Contents, and exact-match FAQ queries engineered for Google's AI Overviews and Featured Snippets</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔗</div>
+                <div class="stat-label">Strategic Position</div>
+                <div class="stat-value">Funnel Node</div>
+                <div class="stat-description">Middle-to-bottom-funnel authority piece guiding readers from strategy questions directly toward custom corrugated plastic sign purchases</div>
+            </div>
+        </div>
+
+        <!-- Section 1: What We Built -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2>What We Built For You</h2>
+            </div>
+
+            <p style="font-size: 18px; line-height: 1.8; margin-bottom: 25px;">
+                We developed a <strong>consultative marketing playbook</strong> that treats yard signs as a strategic growth channel, not just a printed product. This asset walks local service business owners through the exact decisions that determine whether a yard sign campaign succeeds — placement, volume, legal compliance, and attribution tracking — which naturally positions Printastic as the strategic partner behind the sign, not just the printer of it.
+            </p>
+
+            <div class="highlight-box">
+                <div class="highlight-title">Key Authority Signals Embedded</div>
+                <ul class="custom-list">
+                    <li><strong>Campaign Volume Guidance:</strong> Specific benchmarks like 15–25 signs per neighborhood give business owners a real operational plan instead of vague "put up a few signs" advice</li>
+                    <li><strong>California Right-of-Way Compliance:</strong> Addresses local legal placement rules directly, a topic national print competitors avoid entirely, positioning Printastic as a partner who understands the operational risk, not just the transaction</li>
+                    <li><strong>Attribution Tracking Methodology:</strong> Covers UTMs and dedicated phone numbers so business owners can measure real campaign performance, elevating the piece from marketing tips to a genuine ROI framework</li>
+                    <li><strong>Irvine & Orange County Local Anchoring:</strong> Hyper-local references to municipal zoning and California ordinances demonstrate boots-on-the-ground expertise no national competitor can replicate</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 2: Strategic Positioning -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2>Strategic Positioning</h2>
+            </div>
+
+            <div class="subsection">
+                <h3>Who This Speaks To</h3>
+                <p>This content targets <strong>local service business owners</strong> — contractors, landscapers, HVAC companies, and real estate agents — along with event organizers who need cost-effective, high-visibility local marketing with results they can actually measure. They're past the "should I try yard signs" stage and want to know exactly how to do it right.</p>
+            </div>
+
+            <div class="subsection">
+                <h3>The Problem We're Solving</h3>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    We aren't just answering <em>"Where can I buy a yard sign?"</em>; we are solving <strong>"How many signs do I need, where can I legally place them, and how do I know if they're actually working?"</strong>
+                </p>
+            </div>
+
+            <div class="subsection">
+                <h3>Funnel Position</h3>
+                <p>Positioned to <strong>capture bottom- and middle-of-funnel search intent</strong>, this piece meets business owners while they're actively planning a marketing campaign, builds trust through legal and strategic depth, then funnels them directly toward purchasing custom corrugated plastic signs from Printastic.</p>
+            </div>
+        </div>
+
+        <!-- Section 3: Competitive Differentiation -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2>How We Differentiated</h2>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card competitors">
+                    <h4>❌ What Competitors Do</h4>
+                    <p>Large national print-on-demand conglomerates offer <strong>thin, generic product descriptions</strong> focused entirely on the transaction. Local sign shops, meanwhile, lack the digital resources or strategic marketing advice to help business owners actually plan a campaign. Neither addresses operational risks like local compliance or right-of-way laws.</p>
+                </div>
+                <div class="comparison-card us">
+                    <h4>✓ What We Did Instead</h4>
+                    <p>We built a <strong>"Consultative Authority"</strong> resource that goes far beyond the product page. By covering campaign volumes, California right-of-way rules, and attribution tracking, Printastic elevates itself from a commodity printer to a strategic marketing resource local businesses actually rely on.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <div class="numbered-item">
+                    <h4>1. The Campaign Volume Framework</h4>
+                    <p>We provided <strong>specific placement benchmarks</strong> — 15–25 signs per neighborhood — giving business owners a concrete operational plan instead of vague generic advice found on national sites.</p>
+                </div>
+
+                <div class="numbered-item">
+                    <h4>2. The Legal Compliance Angle</h4>
+                    <p>We documented <strong>California right-of-way and local ordinance rules</strong>, a topic national competitors never touch, protecting business owners from fines while positioning Printastic as a partner who understands the full picture.</p>
+                </div>
+
+                <div class="numbered-item">
+                    <h4>3. The ROI Attribution System</h4>
+                    <p>By explaining <strong>UTM tracking and dedicated phone numbers</strong>, we gave business owners a way to measure real campaign performance — turning yard signs from a guess into a trackable marketing channel.</p>
+                </div>
+
+                <div class="numbered-item">
+                    <h4>4. The Irvine & Orange County Local Anchor</h4>
+                    <p>We grounded the guide in <strong>real municipal zoning references</strong> for Irvine and Orange County, demonstrating a level of local, boots-on-the-ground understanding that generic national content simply can't match.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Content Architecture -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2>Content Architecture</h2>
+            </div>
+
+            <h3>Structural Choices That Matter</h3>
+
+            <ul class="custom-list" style="margin-top: 20px;">
+                <li><strong>Key Takeaways Block:</strong> A structured summary at the top of the article gives both readers and AI systems an immediate, scrapeable overview of the guide's core recommendations</li>
+                <li><strong>Deeply Nested Table of Contents:</strong> Clear anchor and jump links let readers and search crawlers navigate straight to material selection, placement rules, or ROI tracking sections</li>
+                <li><strong>Targeted FAQ Section:</strong> Exact-match conversational queries like "Where can I legally put yard signs for my business?" are engineered specifically for Google's AI Overviews</li>
+                <li><strong>Semantic HTML Structure:</strong> Nested H2s/H3s and blockquotes for key insights ensure search engines can efficiently parse the full depth of the guide, supporting both broad and long-tail technical searches</li>
+            </ul>
+        </div>
+
+        <!-- Section 5: What We're Monitoring -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2>What We're Monitoring</h2>
+            </div>
+
+            <p style="margin-bottom: 25px;">As this content gains visibility over the next 60–90 days, we'll track:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="background: #f0f9ff; padding: 20px; border-radius: 10px; border-left: 4px solid #0ea5e9;">
+                    <h4 style="font-weight: 700; margin-bottom: 10px; color: #0369a1;">🤖 AI Overview Presence</h4>
+                    <p style="font-size: 14px;">Is the content appearing in Google's AI-generated snapshots for yard sign placement and marketing strategy queries? The Key Takeaways block and FAQ structure were built specifically for this placement.</p>
+                </div>
+
+                <div style="background: #fef3c7; padding: 20px; border-radius: 10px; border-left: 4px solid #f59e0b;">
+                    <h4 style="font-weight: 700; margin-bottom: 10px; color: #b45309;">📊 Impression Growth</h4>
+                    <p style="font-size: 14px;">Total search visibility for target keywords — tracking how often we appear for yard sign placement, advertising, and local marketing queries regardless of click-through rate</p>
+                </div>
+
+                <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; border-left: 4px solid #22c55e;">
+                    <h4 style="font-weight: 700; margin-bottom: 10px; color: #15803d;">🎯 Keyword Position Movement</h4>
+                    <p style="font-size: 14px;">Ranking trajectory for "yard sign placement," "yard sign advertising," and related terms — high-intent local business queries where our legal and strategic depth gives us a structural edge</p>
+                </div>
+
+                <div style="background: #fae8ff; padding: 20px; border-radius: 10px; border-left: 4px solid #a855f7;">
+                    <h4 style="font-weight: 700; margin-bottom: 10px; color: #7e22ce;">⭐ Featured Snippet Opportunities</h4>
+                    <p style="font-size: 14px;">SERP features captured (definition boxes, FAQ answers, step-by-step lists) — the compliance FAQ and volume-planning sections are prime candidates for these premium placements</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: Built to Compete -->
+        <div class="section">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <h2>Why This Content Is Built to Compete</h2>
+            </div>
+
+            <h3>Quality Indicators</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px;">
+                <span class="badge badge-gold">Consultative Authority Angle</span>
+                <span class="badge badge-blue">Legal Compliance Coverage</span>
+                <span class="badge badge-green">Zero Filler Content</span>
+                <span class="badge badge-gold">Local Zoning Specificity</span>
+                <span class="badge badge-blue">AI Snapshot Optimized</span>
+                <span class="badge badge-green">ROI Attribution Framework</span>
+            </div>
+
+            <ul class="custom-list bullet-list">
+                <li><strong>Strategic Depth:</strong> Campaign volume guidance and ROI tracking methodology transform this from a product page into a genuine marketing resource — something no national competitor delivers</li>
+                <li><strong>Local Authority Depth:</strong> Written with genuine Irvine and Orange County zoning specificity that signals authentic regional expertise beyond generic national advice</li>
+                <li><strong>Zero Filler:</strong> Every section addresses a specific decision point in the campaign — from material selection to legal placement to measuring results</li>
+                <li><strong>AI-Engineered Structure:</strong> Key Takeaways, nested TOC, and FAQ sections designed for Featured Snippet and AI Overview extraction, maximizing SERP real estate in a category competitors rarely contest with this level of depth</li>
+            </ul>
+
+            <h3>Strategic Fit</h3>
+            <p style="line-height: 1.8;">
+                This asset serves as the <strong>"Yard Sign Marketing Strategy Pillar,"</strong> establishing Printastic as the definitive local resource on where, how, and how many signs to deploy for measurable results — creating a direct, low-friction path from strategic research to custom sign purchase for the exact local business demographic Printastic is built to serve.
+            </p>
+        </div>
+
+        <!-- Bottom Line -->
+        <div class="bottom-line">
+            <div class="bottom-line-label">Bottom Line</div>
+            <div class="bottom-line-text">
+                We have moved the conversation from "Where do I buy a yard sign?" to "How do I run a compliant, trackable yard sign campaign that actually grows my business?" — positioning Printastic as the local business owner's strategic marketing partner, not just another print shop.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
